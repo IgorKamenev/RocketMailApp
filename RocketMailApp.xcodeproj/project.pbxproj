@@ -17,7 +17,16 @@
 		2228FF0017CCAE62004362D3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2228FEFF17CCAE62004362D3 /* Default@2x.png */; };
 		2228FF0217CCAE62004362D3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF0117CCAE62004362D3 /* Default-568h@2x.png */; };
 		2228FF0517CCAE62004362D3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF0317CCAE62004362D3 /* MainStoryboard.storyboard */; };
-		2228FF0817CCAE62004362D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2228FF0717CCAE62004362D3 /* ViewController.m */; };
+		229AD64417CD03C000DE4385 /* RBMailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD64317CD03C000DE4385 /* RBMailListViewController.m */; };
+		229AD64B17CD050B00DE4385 /* navigationBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64A17CD050B00DE4385 /* navigationBarBg@2x.png */; };
+		229AD64F17CD082E00DE4385 /* segmentActualMailOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64C17CD082E00DE4385 /* segmentActualMailOn@2x.png */; };
+		229AD65017CD082E00DE4385 /* segmentDeletedMail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64D17CD082E00DE4385 /* segmentDeletedMail@2x.png */; };
+		229AD65117CD082E00DE4385 /* segmentDoneMail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64E17CD082E00DE4385 /* segmentDoneMail@2x.png */; };
+		229AD65917CD0FFA00DE4385 /* segmentActualMail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD65617CD0FFA00DE4385 /* segmentActualMail@2x.png */; };
+		229AD65A17CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD65717CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png */; };
+		229AD65B17CD0FFA00DE4385 /* segmentDoneMailOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD65817CD0FFA00DE4385 /* segmentDoneMailOn@2x.png */; };
+		229AD65F17CD13FC00DE4385 /* IKImageSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD65E17CD13FC00DE4385 /* IKImageSegmentedControl.m */; };
+		229AD66117CD1DD300DE4385 /* refreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD66017CD1DD300DE4385 /* refreshButton@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +44,19 @@
 		2228FEFF17CCAE62004362D3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2228FF0117CCAE62004362D3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2228FF0417CCAE62004362D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		2228FF0617CCAE62004362D3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2228FF0717CCAE62004362D3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		229AD64217CD03C000DE4385 /* RBMailListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBMailListViewController.h; sourceTree = "<group>"; };
+		229AD64317CD03C000DE4385 /* RBMailListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBMailListViewController.m; sourceTree = "<group>"; };
+		229AD64717CD04E700DE4385 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		229AD64A17CD050B00DE4385 /* navigationBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationBarBg@2x.png"; sourceTree = "<group>"; };
+		229AD64C17CD082E00DE4385 /* segmentActualMailOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmentActualMailOn@2x.png"; sourceTree = "<group>"; };
+		229AD64D17CD082E00DE4385 /* segmentDeletedMail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmentDeletedMail@2x.png"; sourceTree = "<group>"; };
+		229AD64E17CD082E00DE4385 /* segmentDoneMail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmentDoneMail@2x.png"; sourceTree = "<group>"; };
+		229AD65617CD0FFA00DE4385 /* segmentActualMail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmentActualMail@2x.png"; sourceTree = "<group>"; };
+		229AD65717CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmentDeletedMailOn@2x.png"; sourceTree = "<group>"; };
+		229AD65817CD0FFA00DE4385 /* segmentDoneMailOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmentDoneMailOn@2x.png"; sourceTree = "<group>"; };
+		229AD65D17CD13FC00DE4385 /* IKImageSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKImageSegmentedControl.h; sourceTree = "<group>"; };
+		229AD65E17CD13FC00DE4385 /* IKImageSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKImageSegmentedControl.m; sourceTree = "<group>"; };
+		229AD66017CD1DD300DE4385 /* refreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refreshButton@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +103,12 @@
 		2228FEF117CCAE62004362D3 /* RocketMailApp */ = {
 			isa = PBXGroup;
 			children = (
+				229AD64817CD050B00DE4385 /* Resources */,
+				229AD64517CD04E700DE4385 /* Libraries */,
+				229AD64017CD03AB00DE4385 /* View Controllers */,
 				2228FEFA17CCAE62004362D3 /* AppDelegate.h */,
 				2228FEFB17CCAE62004362D3 /* AppDelegate.m */,
 				2228FF0317CCAE62004362D3 /* MainStoryboard.storyboard */,
-				2228FF0617CCAE62004362D3 /* ViewController.h */,
-				2228FF0717CCAE62004362D3 /* ViewController.m */,
 				2228FEF217CCAE62004362D3 /* Supporting Files */,
 			);
 			path = RocketMailApp;
@@ -105,6 +126,72 @@
 				2228FF0117CCAE62004362D3 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		229AD64017CD03AB00DE4385 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				229AD64117CD03AB00DE4385 /* RBMailListViewController */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		229AD64117CD03AB00DE4385 /* RBMailListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				229AD64217CD03C000DE4385 /* RBMailListViewController.h */,
+				229AD64317CD03C000DE4385 /* RBMailListViewController.m */,
+			);
+			path = RBMailListViewController;
+			sourceTree = "<group>";
+		};
+		229AD64517CD04E700DE4385 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				229AD65C17CD13E600DE4385 /* IKImageSegmentedControl */,
+				229AD64617CD04E700DE4385 /* Debug */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		229AD64617CD04E700DE4385 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				229AD64717CD04E700DE4385 /* Debug.h */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		229AD64817CD050B00DE4385 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				229AD64917CD050B00DE4385 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		229AD64917CD050B00DE4385 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				229AD66017CD1DD300DE4385 /* refreshButton@2x.png */,
+				229AD65617CD0FFA00DE4385 /* segmentActualMail@2x.png */,
+				229AD65717CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png */,
+				229AD65817CD0FFA00DE4385 /* segmentDoneMailOn@2x.png */,
+				229AD64C17CD082E00DE4385 /* segmentActualMailOn@2x.png */,
+				229AD64D17CD082E00DE4385 /* segmentDeletedMail@2x.png */,
+				229AD64E17CD082E00DE4385 /* segmentDoneMail@2x.png */,
+				229AD64A17CD050B00DE4385 /* navigationBarBg@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		229AD65C17CD13E600DE4385 /* IKImageSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				229AD65D17CD13FC00DE4385 /* IKImageSegmentedControl.h */,
+				229AD65E17CD13FC00DE4385 /* IKImageSegmentedControl.m */,
+			);
+			path = IKImageSegmentedControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +250,14 @@
 				2228FF0017CCAE62004362D3 /* Default@2x.png in Resources */,
 				2228FF0217CCAE62004362D3 /* Default-568h@2x.png in Resources */,
 				2228FF0517CCAE62004362D3 /* MainStoryboard.storyboard in Resources */,
+				229AD64B17CD050B00DE4385 /* navigationBarBg@2x.png in Resources */,
+				229AD64F17CD082E00DE4385 /* segmentActualMailOn@2x.png in Resources */,
+				229AD65017CD082E00DE4385 /* segmentDeletedMail@2x.png in Resources */,
+				229AD65117CD082E00DE4385 /* segmentDoneMail@2x.png in Resources */,
+				229AD65917CD0FFA00DE4385 /* segmentActualMail@2x.png in Resources */,
+				229AD65A17CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png in Resources */,
+				229AD65B17CD0FFA00DE4385 /* segmentDoneMailOn@2x.png in Resources */,
+				229AD66117CD1DD300DE4385 /* refreshButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +270,8 @@
 			files = (
 				2228FEF817CCAE62004362D3 /* main.m in Sources */,
 				2228FEFC17CCAE62004362D3 /* AppDelegate.m in Sources */,
-				2228FF0817CCAE62004362D3 /* ViewController.m in Sources */,
+				229AD64417CD03C000DE4385 /* RBMailListViewController.m in Sources */,
+				229AD65F17CD13FC00DE4385 /* IKImageSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +394,7 @@
 				2228FF0D17CCAE62004362D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
