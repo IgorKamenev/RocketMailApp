@@ -27,6 +27,25 @@
 		229AD65B17CD0FFA00DE4385 /* segmentDoneMailOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD65817CD0FFA00DE4385 /* segmentDoneMailOn@2x.png */; };
 		229AD65F17CD13FC00DE4385 /* IKImageSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD65E17CD13FC00DE4385 /* IKImageSegmentedControl.m */; };
 		229AD66117CD1DD300DE4385 /* refreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD66017CD1DD300DE4385 /* refreshButton@2x.png */; };
+		229AD67617CD20D100DE4385 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD66417CD20D100DE4385 /* AFHTTPClient.m */; };
+		229AD67717CD20D100DE4385 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD66617CD20D100DE4385 /* AFHTTPRequestOperation.m */; };
+		229AD67817CD20D100DE4385 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD66817CD20D100DE4385 /* AFImageRequestOperation.m */; };
+		229AD67917CD20D100DE4385 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD66A17CD20D100DE4385 /* AFJSONRequestOperation.m */; };
+		229AD67A17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD66C17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.m */; };
+		229AD67B17CD20D100DE4385 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD66F17CD20D100DE4385 /* AFPropertyListRequestOperation.m */; };
+		229AD67C17CD20D100DE4385 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD67117CD20D100DE4385 /* AFURLConnectionOperation.m */; };
+		229AD67D17CD20D100DE4385 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD67317CD20D100DE4385 /* AFXMLRequestOperation.m */; };
+		229AD67E17CD20D100DE4385 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD67517CD20D100DE4385 /* UIImageView+AFNetworking.m */; };
+		229AD68217CD20FE00DE4385 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD68117CD20FE00DE4385 /* DataProvider.m */; };
+		229AD68617CD213E00DE4385 /* RMMail.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD68517CD213E00DE4385 /* RMMail.m */; };
+		229AD69117CD269000DE4385 /* IKActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD68917CD269000DE4385 /* IKActiveRecord.m */; };
+		229AD69217CD269000DE4385 /* IKProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD68B17CD269000DE4385 /* IKProperty.m */; };
+		229AD69317CD269000DE4385 /* Sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD68E17CD269000DE4385 /* Sqlite.m */; };
+		229AD69417CD269000DE4385 /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD69017CD269000DE4385 /* SqliteManager.m */; };
+		229AD69617CD278500DE4385 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 229AD69517CD278500DE4385 /* libsqlite3.dylib */; };
+		229AD69817CD27B900DE4385 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229AD69717CD27B900DE4385 /* Security.framework */; };
+		229AD69B17CD2E6A00DE4385 /* RMMailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD69A17CD2E6A00DE4385 /* RMMailCell.m */; };
+		229AD69D17CD2FA000DE4385 /* start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD69C17CD2FA000DE4385 /* start@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +76,42 @@
 		229AD65D17CD13FC00DE4385 /* IKImageSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKImageSegmentedControl.h; sourceTree = "<group>"; };
 		229AD65E17CD13FC00DE4385 /* IKImageSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKImageSegmentedControl.m; sourceTree = "<group>"; };
 		229AD66017CD1DD300DE4385 /* refreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refreshButton@2x.png"; sourceTree = "<group>"; };
+		229AD66317CD20D100DE4385 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		229AD66417CD20D100DE4385 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		229AD66517CD20D100DE4385 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		229AD66617CD20D100DE4385 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		229AD66717CD20D100DE4385 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		229AD66817CD20D100DE4385 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		229AD66917CD20D100DE4385 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		229AD66A17CD20D100DE4385 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		229AD66B17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		229AD66C17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		229AD66D17CD20D100DE4385 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		229AD66E17CD20D100DE4385 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		229AD66F17CD20D100DE4385 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		229AD67017CD20D100DE4385 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		229AD67117CD20D100DE4385 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		229AD67217CD20D100DE4385 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		229AD67317CD20D100DE4385 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		229AD67417CD20D100DE4385 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		229AD67517CD20D100DE4385 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		229AD68017CD20FE00DE4385 /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
+		229AD68117CD20FE00DE4385 /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
+		229AD68417CD213E00DE4385 /* RMMail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMail.h; sourceTree = "<group>"; };
+		229AD68517CD213E00DE4385 /* RMMail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMail.m; sourceTree = "<group>"; };
+		229AD68817CD269000DE4385 /* IKActiveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKActiveRecord.h; sourceTree = "<group>"; };
+		229AD68917CD269000DE4385 /* IKActiveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKActiveRecord.m; sourceTree = "<group>"; };
+		229AD68A17CD269000DE4385 /* IKProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKProperty.h; sourceTree = "<group>"; };
+		229AD68B17CD269000DE4385 /* IKProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKProperty.m; sourceTree = "<group>"; };
+		229AD68D17CD269000DE4385 /* Sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sqlite.h; sourceTree = "<group>"; };
+		229AD68E17CD269000DE4385 /* Sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sqlite.m; sourceTree = "<group>"; };
+		229AD68F17CD269000DE4385 /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
+		229AD69017CD269000DE4385 /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
+		229AD69517CD278500DE4385 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		229AD69717CD27B900DE4385 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		229AD69917CD2E6A00DE4385 /* RMMailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMailCell.h; sourceTree = "<group>"; };
+		229AD69A17CD2E6A00DE4385 /* RMMailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMailCell.m; sourceTree = "<group>"; };
+		229AD69C17CD2FA000DE4385 /* start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229AD69817CD27B900DE4385 /* Security.framework in Frameworks */,
+				229AD69617CD278500DE4385 /* libsqlite3.dylib in Frameworks */,
 				2228FEEC17CCAE62004362D3 /* UIKit.framework in Frameworks */,
 				2228FEEE17CCAE62004362D3 /* Foundation.framework in Frameworks */,
 				2228FEF017CCAE62004362D3 /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +150,8 @@
 		2228FEEA17CCAE62004362D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				229AD69717CD27B900DE4385 /* Security.framework */,
+				229AD69517CD278500DE4385 /* libsqlite3.dylib */,
 				2228FEEB17CCAE62004362D3 /* UIKit.framework */,
 				2228FEED17CCAE62004362D3 /* Foundation.framework */,
 				2228FEEF17CCAE62004362D3 /* CoreGraphics.framework */,
@@ -103,6 +162,8 @@
 		2228FEF117CCAE62004362D3 /* RocketMailApp */ = {
 			isa = PBXGroup;
 			children = (
+				229AD68317CD211700DE4385 /* Model */,
+				229AD67F17CD20E700DE4385 /* Data Provider */,
 				229AD64817CD050B00DE4385 /* Resources */,
 				229AD64517CD04E700DE4385 /* Libraries */,
 				229AD64017CD03AB00DE4385 /* View Controllers */,
@@ -141,6 +202,8 @@
 			children = (
 				229AD64217CD03C000DE4385 /* RBMailListViewController.h */,
 				229AD64317CD03C000DE4385 /* RBMailListViewController.m */,
+				229AD69917CD2E6A00DE4385 /* RMMailCell.h */,
+				229AD69A17CD2E6A00DE4385 /* RMMailCell.m */,
 			);
 			path = RBMailListViewController;
 			sourceTree = "<group>";
@@ -148,6 +211,8 @@
 		229AD64517CD04E700DE4385 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				229AD68717CD269000DE4385 /* IKActiveRecord */,
+				229AD66217CD20D100DE4385 /* AFNetworking */,
 				229AD65C17CD13E600DE4385 /* IKImageSegmentedControl */,
 				229AD64617CD04E700DE4385 /* Debug */,
 			);
@@ -173,6 +238,7 @@
 		229AD64917CD050B00DE4385 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				229AD69C17CD2FA000DE4385 /* start@2x.png */,
 				229AD66017CD1DD300DE4385 /* refreshButton@2x.png */,
 				229AD65617CD0FFA00DE4385 /* segmentActualMail@2x.png */,
 				229AD65717CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png */,
@@ -192,6 +258,73 @@
 				229AD65E17CD13FC00DE4385 /* IKImageSegmentedControl.m */,
 			);
 			path = IKImageSegmentedControl;
+			sourceTree = "<group>";
+		};
+		229AD66217CD20D100DE4385 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				229AD66317CD20D100DE4385 /* AFHTTPClient.h */,
+				229AD66417CD20D100DE4385 /* AFHTTPClient.m */,
+				229AD66517CD20D100DE4385 /* AFHTTPRequestOperation.h */,
+				229AD66617CD20D100DE4385 /* AFHTTPRequestOperation.m */,
+				229AD66717CD20D100DE4385 /* AFImageRequestOperation.h */,
+				229AD66817CD20D100DE4385 /* AFImageRequestOperation.m */,
+				229AD66917CD20D100DE4385 /* AFJSONRequestOperation.h */,
+				229AD66A17CD20D100DE4385 /* AFJSONRequestOperation.m */,
+				229AD66B17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.h */,
+				229AD66C17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.m */,
+				229AD66D17CD20D100DE4385 /* AFNetworking.h */,
+				229AD66E17CD20D100DE4385 /* AFPropertyListRequestOperation.h */,
+				229AD66F17CD20D100DE4385 /* AFPropertyListRequestOperation.m */,
+				229AD67017CD20D100DE4385 /* AFURLConnectionOperation.h */,
+				229AD67117CD20D100DE4385 /* AFURLConnectionOperation.m */,
+				229AD67217CD20D100DE4385 /* AFXMLRequestOperation.h */,
+				229AD67317CD20D100DE4385 /* AFXMLRequestOperation.m */,
+				229AD67417CD20D100DE4385 /* UIImageView+AFNetworking.h */,
+				229AD67517CD20D100DE4385 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		229AD67F17CD20E700DE4385 /* Data Provider */ = {
+			isa = PBXGroup;
+			children = (
+				229AD68017CD20FE00DE4385 /* DataProvider.h */,
+				229AD68117CD20FE00DE4385 /* DataProvider.m */,
+			);
+			path = "Data Provider";
+			sourceTree = "<group>";
+		};
+		229AD68317CD211700DE4385 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				229AD68417CD213E00DE4385 /* RMMail.h */,
+				229AD68517CD213E00DE4385 /* RMMail.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		229AD68717CD269000DE4385 /* IKActiveRecord */ = {
+			isa = PBXGroup;
+			children = (
+				229AD68817CD269000DE4385 /* IKActiveRecord.h */,
+				229AD68917CD269000DE4385 /* IKActiveRecord.m */,
+				229AD68A17CD269000DE4385 /* IKProperty.h */,
+				229AD68B17CD269000DE4385 /* IKProperty.m */,
+				229AD68C17CD269000DE4385 /* SqliteLibrary */,
+			);
+			path = IKActiveRecord;
+			sourceTree = "<group>";
+		};
+		229AD68C17CD269000DE4385 /* SqliteLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				229AD68D17CD269000DE4385 /* Sqlite.h */,
+				229AD68E17CD269000DE4385 /* Sqlite.m */,
+				229AD68F17CD269000DE4385 /* SqliteManager.h */,
+				229AD69017CD269000DE4385 /* SqliteManager.m */,
+			);
+			path = SqliteLibrary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +391,7 @@
 				229AD65A17CD0FFA00DE4385 /* segmentDeletedMailOn@2x.png in Resources */,
 				229AD65B17CD0FFA00DE4385 /* segmentDoneMailOn@2x.png in Resources */,
 				229AD66117CD1DD300DE4385 /* refreshButton@2x.png in Resources */,
+				229AD69D17CD2FA000DE4385 /* start@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +406,22 @@
 				2228FEFC17CCAE62004362D3 /* AppDelegate.m in Sources */,
 				229AD64417CD03C000DE4385 /* RBMailListViewController.m in Sources */,
 				229AD65F17CD13FC00DE4385 /* IKImageSegmentedControl.m in Sources */,
+				229AD67617CD20D100DE4385 /* AFHTTPClient.m in Sources */,
+				229AD67717CD20D100DE4385 /* AFHTTPRequestOperation.m in Sources */,
+				229AD67817CD20D100DE4385 /* AFImageRequestOperation.m in Sources */,
+				229AD67917CD20D100DE4385 /* AFJSONRequestOperation.m in Sources */,
+				229AD67A17CD20D100DE4385 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				229AD67B17CD20D100DE4385 /* AFPropertyListRequestOperation.m in Sources */,
+				229AD67C17CD20D100DE4385 /* AFURLConnectionOperation.m in Sources */,
+				229AD67D17CD20D100DE4385 /* AFXMLRequestOperation.m in Sources */,
+				229AD67E17CD20D100DE4385 /* UIImageView+AFNetworking.m in Sources */,
+				229AD68217CD20FE00DE4385 /* DataProvider.m in Sources */,
+				229AD68617CD213E00DE4385 /* RMMail.m in Sources */,
+				229AD69117CD269000DE4385 /* IKActiveRecord.m in Sources */,
+				229AD69217CD269000DE4385 /* IKProperty.m in Sources */,
+				229AD69317CD269000DE4385 /* Sqlite.m in Sources */,
+				229AD69417CD269000DE4385 /* SqliteManager.m in Sources */,
+				229AD69B17CD2E6A00DE4385 /* RMMailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
