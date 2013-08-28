@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSIndexPath* loadingCellIndexPath;
 @property (nonatomic) BOOL isEmailLoading;
 @property (nonatomic) BOOL isDragging;
+@property (nonatomic) BOOL isBeginDragging;
 
 @property (nonatomic, strong) UIView* emptyFolderView;
 
@@ -162,7 +163,10 @@ static int kEmailsPerPage = 20;
 - (void) needsShowLoadingCell
 {
     
+    if (self.loadingCell) return;
+    
     DLog();
+    
     self.loadingCellIndexPath = [NSIndexPath indexPathForRow:self.items.count inSection:0];
     self.loadingCell = [self.tableView dequeueReusableCellWithIdentifier:@"RMMailLoadingCell" ];
     
@@ -319,6 +323,7 @@ static int kEmailsPerPage = 20;
         cell.subjectLabel.text = mail.subject;
         cell.bodyLabel.text = mail.body;
         cell.dateLabel.text = [mail.receivedAt relativeDate];
+        cell.messageCount = mail.messages;
         
         [self.cellCache setObject:cell forKey:indexPath];
         
@@ -449,12 +454,11 @@ static int kEmailsPerPage = 20;
     
     if (scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height) {
         
-        if (self.loadingCellIndexPath) {
-         
-            return;
-        }
+        if (self.loadingCellIndexPath) return;
+        if (!self.isBeginDragging) return;
         
         if (scrollView.frame.size.height < scrollView.contentSize.height) {
+            self.isBeginDragging = NO;
             [self needsShowLoadingCell];
             [self.loadingCell.activityIndicator startAnimating];
         }
@@ -467,6 +471,7 @@ static int kEmailsPerPage = 20;
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     self.isDragging = YES;
+    self.isBeginDragging = YES;
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

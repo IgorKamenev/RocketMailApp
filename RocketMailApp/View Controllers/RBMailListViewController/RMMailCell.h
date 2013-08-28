@@ -17,5 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIView *doneView;
 @property (weak, nonatomic) IBOutlet UIView *deleteView;
+@property (weak, nonatomic) IBOutlet UILabel *messageCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *messageCountImageView;
+
+@property (nonatomic) int messageCount;
 
 @end

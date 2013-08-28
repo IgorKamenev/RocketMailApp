@@ -52,7 +52,9 @@ static NSString* kMailApiURL = @"http://rocket-ios.herokuapp.com/emails.json";
             }
             [RMMail endTransaction];
             [(AppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
+
             success(emailsAr);
+            
         });
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

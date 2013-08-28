@@ -13,11 +13,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RMMailCell" id="whu-MH-f7s" customClass="RMMailCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RMMailCell" id="whu-MH-f7s" customClass="RMMailCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="84"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="start@2x.png" id="xkl-Tz-O4W">
@@ -33,7 +33,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cRI-ZB-pRh">
-                                            <rect key="frame" x="33" y="23" width="274" height="21"/>
+                                            <rect key="frame" x="33" y="23" width="239" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -48,7 +48,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Привет Екатерина Сезина написала новый тикет в саппорт" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CM3-jR-6cN">
-                                            <rect key="frame" x="33" y="42" width="267" height="39"/>
+                                            <rect key="frame" x="33" y="42" width="239" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -67,7 +67,7 @@
                                             <color key="backgroundColor" red="0.38431372549019605" green="0.85098039215686272" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <view contentMode="scaleToFill" id="O2R-ob-4Fl">
-                                            <rect key="frame" x="235" y="0.0" width="65" height="84"/>
+                                            <rect key="frame" x="171" y="0.0" width="65" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="iconDelete@2x.png" id="dyW-97-jb5">
@@ -77,6 +77,21 @@
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="disclosureIndicator@2x.png" id="jTZ-hE-Gtw">
+                                            <rect key="frame" x="301" y="37" width="9" height="12"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="messageCountBadge@2x.png" id="SX4-Rn-TdV">
+                                            <rect key="frame" x="279" y="34" width="16" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GbA-l5-JR8">
+                                            <rect key="frame" x="279" y="37" width="16" height="12"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -86,6 +101,8 @@
                                     <outlet property="deleteView" destination="O2R-ob-4Fl" id="Ktu-cB-UWj"/>
                                     <outlet property="doneView" destination="yvR-uQ-DkZ" id="IHU-w7-74p"/>
                                     <outlet property="fromLabel" destination="cQ9-cY-I9k" id="nco-g6-e5B"/>
+                                    <outlet property="messageCountImageView" destination="SX4-Rn-TdV" id="xJx-LW-6XO"/>
+                                    <outlet property="messageCountLabel" destination="GbA-l5-JR8" id="Rab-Pl-1yD"/>
                                     <outlet property="starImageView" destination="xkl-Tz-O4W" id="JX1-yt-uQ6"/>
                                     <outlet property="subjectLabel" destination="cRI-ZB-pRh" id="p9I-LA-LZJ"/>
                                 </connections>
@@ -144,8 +161,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="disclosureIndicator@2x.png" width="18" height="24"/>
         <image name="iconDelete@2x.png" width="44" height="44"/>
         <image name="iconDone@2x.png" width="52" height="40"/>
+        <image name="messageCountBadge@2x.png" width="30" height="32"/>
         <image name="start@2x.png" width="36" height="36"/>
     </resources>
     <classes>
@@ -160,6 +179,8 @@
                 <relationship kind="outlet" name="deleteView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="doneView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="messageCountImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="messageCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="starImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="subjectLabel" candidateClass="UILabel"/>
             </relationships>

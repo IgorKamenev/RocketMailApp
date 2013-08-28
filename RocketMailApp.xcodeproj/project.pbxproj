@@ -23,6 +23,8 @@
 		223C394617CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223C394117CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf */; };
 		223C394717CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 223C394217CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf */; };
 		223C394B17CEA24E00C15EBC /* NSDate+relativeDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C394A17CEA24E00C15EBC /* NSDate+relativeDate.m */; };
+		223C394D17CEB31400C15EBC /* messageCountBadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223C394C17CEB31400C15EBC /* messageCountBadge@2x.png */; };
+		223C394F17CEB4DC00C15EBC /* disclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223C394E17CEB4DC00C15EBC /* disclosureIndicator@2x.png */; };
 		229AD64417CD03C000DE4385 /* RBMailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD64317CD03C000DE4385 /* RBMailListViewController.m */; };
 		229AD64B17CD050B00DE4385 /* navigationBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64A17CD050B00DE4385 /* navigationBarBg@2x.png */; };
 		229AD64F17CD082E00DE4385 /* segmentActualMailOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64C17CD082E00DE4385 /* segmentActualMailOn@2x.png */; };
@@ -81,6 +83,8 @@
 		223C394217CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "G-Type - ChevinPro-Medium.otf"; sourceTree = "<group>"; };
 		223C394917CEA24E00C15EBC /* NSDate+relativeDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+relativeDate.h"; sourceTree = "<group>"; };
 		223C394A17CEA24E00C15EBC /* NSDate+relativeDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+relativeDate.m"; sourceTree = "<group>"; };
+		223C394C17CEB31400C15EBC /* messageCountBadge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageCountBadge@2x.png"; sourceTree = "<group>"; };
+		223C394E17CEB4DC00C15EBC /* disclosureIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosureIndicator@2x.png"; sourceTree = "<group>"; };
 		229AD64217CD03C000DE4385 /* RBMailListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBMailListViewController.h; sourceTree = "<group>"; };
 		229AD64317CD03C000DE4385 /* RBMailListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBMailListViewController.m; sourceTree = "<group>"; };
 		229AD64717CD04E700DE4385 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 		229AD64917CD050B00DE4385 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				223C394E17CEB4DC00C15EBC /* disclosureIndicator@2x.png */,
+				223C394C17CEB31400C15EBC /* messageCountBadge@2x.png */,
 				229AD6A417CE41FD00DE4385 /* iconDelete@2x.png */,
 				229AD6A117CE40F400DE4385 /* iconDone@2x.png */,
 				229AD69E17CE3F4600DE4385 /* RMMailCellDelimiter@2x.png */,
@@ -454,6 +460,8 @@
 				223C394517CE9C9800C15EBC /* ChevinCyrillic-Light.ttf in Resources */,
 				223C394617CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf in Resources */,
 				223C394717CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf in Resources */,
+				223C394D17CEB31400C15EBC /* messageCountBadge@2x.png in Resources */,
+				223C394F17CEB4DC00C15EBC /* disclosureIndicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
