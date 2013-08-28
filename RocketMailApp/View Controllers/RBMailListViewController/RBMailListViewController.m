@@ -33,6 +33,8 @@
 @property (nonatomic) BOOL isEmailLoading;
 @property (nonatomic) BOOL isDragging;
 
+@property (nonatomic, strong) UIView* emptyFolderView;
+
 @end
 
 static int kEmailsPerPage = 20;
@@ -80,10 +82,16 @@ static int kEmailsPerPage = 20;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.items = emails;
             [self.tableView reloadData];
+
+            if (self.items.count == 0) {
+
+                [self showEmptyFolder];
+            } else {
+                [self hideEmptyFolder];
+            }
         });
         
     });
-    
 }
 
 - (void) setupAppearance
@@ -128,19 +136,8 @@ static int kEmailsPerPage = 20;
     [self.navigationItem setRightBarButtonItem:item];
 }
 
-- (void) didRefreshButtonPressed
-{
-    
-    self.items = nil;
-    [self.tableView reloadData];
-    [self.dataProvider removeAllEmails];
 
-    self.currentPage = 0;
-    [self loadNextEmailsFromServer];
-    
-}
-
-- (void) loadNextEmailsFromServer
+- (void) makeNextEmailsRequest
 {
 
     if (self.isEmailLoading) return;
@@ -244,6 +241,39 @@ static int kEmailsPerPage = 20;
     return NO;
 }
 
+- (void) showEmptyFolder
+{
+    if (!self.emptyFolderView) {
+        UILabel* label = [[UILabel alloc] initWithFrame:self.view.bounds];
+        label.text = @"This folder is empty";
+        label.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont fontWithName:@"ChevinCyrillic-Bold" size:30.0];
+        self.emptyFolderView = label;
+        [self.view addSubview:self.emptyFolderView];
+    }
+}
+
+- (void) hideEmptyFolder
+{
+    if (self.emptyFolderView) {
+        [self.emptyFolderView removeFromSuperview];
+        self.emptyFolderView = nil;
+    }
+}
+
+- (void) didRefreshButtonPressed
+{
+    
+    self.items = nil;
+    [self.tableView reloadData];
+    [self.dataProvider removeAllEmails];
+    
+    self.currentPage = 0;
+    [self makeNextEmailsRequest];
+    
+}
+
 #pragma mark UITableViewDataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -293,6 +323,7 @@ static int kEmailsPerPage = 20;
         [self.cellCache setObject:cell forKey:indexPath];
         
         return cell;
+        
     } else if ([object isKindOfClass:[RMMailLoadingCell class]]) {
         
         return object;
@@ -428,7 +459,7 @@ static int kEmailsPerPage = 20;
             [self.loadingCell.activityIndicator startAnimating];
         }
         
-        [self loadNextEmailsFromServer];
+        [self makeNextEmailsRequest];
         
     }
 }

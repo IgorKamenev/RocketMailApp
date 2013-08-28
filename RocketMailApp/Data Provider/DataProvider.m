@@ -7,6 +7,7 @@
 //
 
 #import "DataProvider.h"
+#import "AppDelegate.h"
 
 @interface DataProvider ()
 
@@ -50,11 +51,15 @@ static NSString* kMailApiURL = @"http://rocket-ios.herokuapp.com/emails.json";
                 [emailsAr addObject:mail];
             }
             [RMMail endTransaction];
+            [(AppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
             success(emailsAr);
         });
         
-    } failure:nil];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
+    }];
 
+    [(AppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:YES];
     [operation start];
     
     return nil;
