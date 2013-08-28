@@ -319,7 +319,7 @@ static int kEmailsPerPage = 20;
         RMMail* mail = self.items[indexPath.row];
         RMMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMailCell" forIndexPath:indexPath];
         
-        cell.fromLabel.text = mail.from;
+        cell.fromLabel.text = mail.fromDescription;
         cell.subjectLabel.text = mail.subject;
         cell.bodyLabel.text = mail.body;
         cell.dateLabel.text = [mail.receivedAt relativeDate];
@@ -464,7 +464,6 @@ static int kEmailsPerPage = 20;
         }
         
         [self makeNextEmailsRequest];
-        
     }
 }
 

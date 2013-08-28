@@ -31,4 +31,6 @@ typedef enum {
 
 + (RMMail*) mailByDict: (NSDictionary*) dict;
 
+- (NSString*) fromDescription;
+
 @end

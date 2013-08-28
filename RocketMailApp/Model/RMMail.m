@@ -46,4 +46,64 @@
     return mail;
 }
 
+- (NSString*) fromDescription {
+
+    NSMutableArray* toPersons = [NSMutableArray new];
+
+    NSArray* persons = [self.to componentsSeparatedByString:@","];
+    
+    for (NSString* str in persons) {
+        
+        NSDictionary* personDict = [self parsePersons:str];
+        [toPersons addObject:personDict];
+    }
+
+    NSDictionary* fromPersonDict = [self parsePersons:self.from];
+    
+    NSString* from;
+    
+    if (toPersons.count == 1) {
+        
+        from = [NSString stringWithFormat:@"%@ & %@", fromPersonDict[@"name"], toPersons[0][@"name"]];
+        
+    } else {
+
+        from = [NSString stringWithFormat:@"%@ & %d others", fromPersonDict[@"name"], toPersons.count];
+    }
+    
+    return from;
+}
+
+- (NSDictionary*) parsePersons: (NSString*) persons
+{
+
+    NSString* person = [persons stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    NSString *pattern = @"(.*?) <(.*?)>";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    
+    NSTextCheckingResult *res = [regex firstMatchInString:person options:0 range:NSMakeRange(0, person.length)];
+    
+    if (res.numberOfRanges == 0) {
+        
+        NSString* name = person;
+        NSString* email = person;
+        
+        NSDictionary* dict = @{@"name": name, @"email": email};
+        return dict;
+        
+    } else {
+        
+        NSString* name = [person substringWithRange:[res rangeAtIndex:1]];
+        NSString* email = [person substringWithRange:[res rangeAtIndex:2]];
+        
+        NSDictionary* dict = @{@"name": name, @"email": email};
+        return dict;
+    }
+    
+}
+
+
 @end
