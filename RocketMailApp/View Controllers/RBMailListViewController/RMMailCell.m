@@ -46,7 +46,6 @@
 
 -(void)layoutSubviews
 {
-    DLog(@"");
 }
 
 -(void)prepareForReuse
