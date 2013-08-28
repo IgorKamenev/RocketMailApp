@@ -9,14 +9,21 @@
 #import "RBMailListViewController.h"
 #import "DataProvider.h"
 #import "RMMailCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RBMailListViewController ()
 
 @property (nonatomic, strong) IKImageSegmentedControl* segmentedControl;
 @property (nonatomic, strong) DataProvider* dataProvider;
-@property (nonatomic, strong) NSArray* emails;
+@property (nonatomic, strong) NSMutableArray* emails;
 
 @property (nonatomic) int currentPage;
+
+@property (nonatomic, strong) UIPanGestureRecognizer* panRecognizer;
+
+@property (nonatomic, strong) NSIndexPath* currentSwipingCellIndexPath;
+
+@property (nonatomic, strong) NSCache* cellCache;
 
 @end
 
@@ -33,6 +40,14 @@
     self.dataProvider = [DataProvider sharedInstance];
 
     [self loadEmails];
+
+    self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
+    self.panRecognizer.maximumNumberOfTouches = 1;
+    self.panRecognizer.minimumNumberOfTouches = 1;
+    self.panRecognizer.delegate = self;
+    [self.tableView addGestureRecognizer:self.panRecognizer];
+
+    self.cellCache = [NSCache new];
     
 }
 
@@ -93,6 +108,34 @@
     }];
 }
 
+- (void) needsDeleteMailAtIndexPath: (NSIndexPath*) indexPath
+{
+    [self removeRowAtIndexPath:indexPath];
+}
+
+- (void) needsCompleteMailAtIndexPath: (NSIndexPath*) indexPath
+{
+    [self removeRowAtIndexPath:indexPath];
+    
+}
+
+- (void) removeRowAtIndexPath: (NSIndexPath*) indexPath
+{
+
+    [CATransaction begin];
+    
+    [CATransaction setCompletionBlock:^{
+        [self.cellCache removeAllObjects];
+        [self.tableView reloadData];
+    }];
+
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    [self.emails removeObjectAtIndex: indexPath.row];
+    [self.tableView endUpdates];
+
+    [CATransaction commit];
+}
 
 #pragma mark UITableViewDataSource
 
@@ -117,12 +160,14 @@
 {
     
     RMMail* mail = self.emails[indexPath.row];
-    RMMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMailCell"];
+    RMMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMailCell" forIndexPath:indexPath];
 
     cell.fromLabel.text = mail.from;
     cell.subjectLabel.text = mail.subject;
     cell.bodyLabel.text = mail.body;
     cell.dateLabel.text = [mail.receivedAt description];
+    
+    [self.cellCache setObject:cell forKey:indexPath];
     
     return cell;
 }
@@ -132,5 +177,94 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark UIPanGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
+    if (gestureRecognizer == self.panRecognizer) {
+        
+        UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)gestureRecognizer;
+        
+        CGPoint point = [pan translationInView:self.tableView];
+        CGPoint location = [pan locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+        
+        if (fabsf(point.y) > fabsf(point.x)) {
+            return NO;
+        } else if (indexPath == nil) {
+            return NO;
+        } else if (indexPath) {
+            return YES;
+        }
+    }
+    
+    return YES;
+}
+
+- (void)panGestureRecognizer:(UIPanGestureRecognizer *)recognizer {
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan && [recognizer numberOfTouches] > 0) {
+        
+        CGPoint location1 = [recognizer locationOfTouch:0 inView:self.tableView];
+        
+        self.currentSwipingCellIndexPath = [self.tableView indexPathForRowAtPoint:location1];
+    }
+    
+    else if (recognizer.state == UIGestureRecognizerStateChanged && [recognizer numberOfTouches] > 0) {
+        
+        CGPoint translation = [recognizer translationInView:self.tableView];
+        
+        UITableViewCell* cell =  [self.cellCache objectForKey:self.currentSwipingCellIndexPath];
+        CGRect rect = cell.contentView.frame;
+        rect.origin.x = translation.x;
+        cell.contentView.frame = rect;
+        
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        
+        UITableViewCell* cell =  [self.cellCache objectForKey:self.currentSwipingCellIndexPath];
+        
+        if (cell.contentView.frame.origin.x > cell.contentView.frame.size.width / 2.0) {
+            
+            // done
+            
+            [UIView animateWithDuration:0.2 animations:^{
+
+                CGRect rect = cell.contentView.frame;
+                rect.origin.x = cell.frame.size.width;
+                cell.contentView.frame = rect;
+                
+            } completion:^(BOOL finished) {
+                
+                [self needsCompleteMailAtIndexPath:self.currentSwipingCellIndexPath];
+                
+            }];
+            
+        } else if (abs(cell.contentView.frame.origin.x) > cell.contentView.frame.size.width / 2.0) {
+        
+            // delete
+
+            [UIView animateWithDuration:0.2 animations:^{
+                
+                CGRect rect = cell.contentView.frame;
+                rect.origin.x = -cell.frame.size.width;
+                cell.contentView.frame = rect;
+                
+            } completion:^(BOOL finished) {
+
+                [self needsDeleteMailAtIndexPath:self.currentSwipingCellIndexPath];
+
+            }];
+            
+        } else {
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                
+                CGRect rect = cell.contentView.frame;
+                rect.origin.x = 0;
+                cell.contentView.frame = rect;
+            }];
+        }
+    }
+}
 
 @end

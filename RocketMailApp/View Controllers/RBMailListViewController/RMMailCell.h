@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface RMMailCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *starImageView;
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bodyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIView *doneView;
+@property (weak, nonatomic) IBOutlet UIView *deleteView;
 
 @end

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "IKImageSegmentedControl.h"
 
-@interface RBMailListViewController : UITableViewController <IKImageSegmentedControlDelegate>
+@interface RBMailListViewController : UITableViewController <IKImageSegmentedControlDelegate, UIGestureRecognizerDelegate>
 
 @end

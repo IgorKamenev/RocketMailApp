@@ -8,15 +8,33 @@
 
 #import "RMMailCell.h"
 
+@interface RMMailCell ()
+
+@end
+
 @implementation RMMailCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+-(void)awakeFromNib
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    
+    UIImage* delimiterImage = [UIImage imageNamed:@"RMMailCellDelimiter.png"];
+    UIImageView* delimiterImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-320, self.frame.size.height-1, 320*3, 1)];
+    
+    delimiterImageView.image = delimiterImage;
+    delimiterImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    
+    [self addSubview:delimiterImageView];
+    
+    CGRect rect = self.doneView.frame;
+    rect.origin.x = -self.frame.size.width;
+    rect.size.width = self.frame.size.width;
+    self.doneView.frame = rect;
+    
+    rect = self.deleteView.frame;
+    rect.origin.x = self.frame.size.width;
+    rect.size.width = self.frame.size.width;
+    self.deleteView.frame = rect;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -24,6 +42,18 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)layoutSubviews
+{
+    DLog(@"");
+}
+
+-(void)prepareForReuse
+{
+    CGRect rect = self.contentView.frame;
+    rect.origin.x = 0;
+    self.contentView.frame = rect;
 }
 
 @end
