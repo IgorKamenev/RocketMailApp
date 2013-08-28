@@ -336,19 +336,35 @@ offset:(NSUInteger)offset limit:(NSUInteger)limit
                               limit:limit];
 }
 
-+ (instancetype) findAny {
-    NSArray* res = [self findByExpression:@"" arguments:@[] limit:1];
-    return (res.count > 0 ? res[0] : nil);
-}
-
 + (NSMutableArray*) findAllByFieldName: (NSString*) fieldName equalTo: (id) value
 {
     if (!value) {
         return [NSMutableArray array];
     }
     
-    return [self findByExpression:[NSString stringWithFormat:@"%@=?", fieldName] arguments:@[value] limit:0];
+    return [self findAllByFieldName:fieldName equalTo:value orderBy:[self defaultOrderBy]];
 }
+
++ (NSMutableArray*) findAllByFieldName:(NSString *)fieldName equalTo:(id)value orderBy: (NSString*) orderBy
+{
+    
+    NSMutableArray* args = [NSMutableArray new];
+    args[0] = value;
+    
+    return [self runQueryWithSelect:[self defaultSelect]
+                              where:[NSString stringWithFormat:@"%@=?", fieldName]
+                            orderBy:orderBy
+                               args:args
+                             offset:0
+                              limit:0];
+}
+
++ (instancetype) findAny {
+    NSArray* res = [self findByExpression:@"" arguments:@[] limit:1];
+    return (res.count > 0 ? res[0] : nil);
+}
+
+
 
 + (instancetype) findOneByFieldName: (NSString*) fieldName equalTo: (id) value {
     

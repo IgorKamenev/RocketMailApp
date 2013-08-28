@@ -32,6 +32,7 @@
 
 + (NSMutableArray*) findAll;
 + (NSMutableArray*) findAllByFieldName: (NSString*) fieldName equalTo: (id) value;
++ (NSMutableArray*) findAllByFieldName:(NSString *)fieldName equalTo:(id)value orderBy: (NSString*) orderBy;
 + (NSMutableArray*) findAllWithLimit:(NSUInteger)limit;
 + (NSMutableArray*) findByExpression:(NSString*)expression arguments:(NSArray*)arguments limit:(NSUInteger)limit;
 + (instancetype) findOneByExpression:(NSString*)expression arguments:(NSArray*)arguments;

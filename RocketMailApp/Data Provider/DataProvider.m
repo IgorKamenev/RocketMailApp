@@ -59,5 +59,14 @@ static NSString* kMailApiURL = @"http://rocket-ios.herokuapp.com/emails.json";
     return nil;
 }
 
+- (NSMutableArray*) emailsFromDBWithType: (RMMailType) mailType
+{
+    return [RMMail findAllByFieldName:@"type" equalTo: [NSNumber numberWithInt:mailType] orderBy:@"receivedAt DESC"];
+}
+
+- (void) removeAllEmails
+{
+    [RMMail truncate];
+}
 
 @end

@@ -39,7 +39,6 @@
     self.currentPage = 0;
     self.dataProvider = [DataProvider sharedInstance];
 
-    [self loadEmails];
 
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
     self.panRecognizer.maximumNumberOfTouches = 1;
@@ -48,6 +47,32 @@
     [self.tableView addGestureRecognizer:self.panRecognizer];
 
     self.cellCache = [NSCache new];
+    
+    [self loadEmailsFromDB];
+    
+}
+
+- (void) loadEmailsFromDB
+{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+
+        RMMailType type;
+
+        switch (self.segmentedControl.selectedIndex) {
+            case 0: type = RMMailTypeDeleted; break;
+            case 1: type = RMMailTypeActual; break;
+            default: type = RMMailTypeDone; break;
+        }
+        
+        NSMutableArray* emails = [self.dataProvider emailsFromDBWithType:type];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.emails = emails;
+            [self.tableView reloadData];
+        });
+        
+    });
     
 }
 
@@ -95,7 +120,11 @@
 
 - (void) didRefreshButtonPressed
 {
-    DLog(@"");
+    
+    self.emails = nil;
+    [self.tableView reloadData];
+    [self.dataProvider removeAllEmails];
+    [self loadEmails];
 }
 
 - (void) loadEmails
@@ -110,13 +139,22 @@
 
 - (void) needsDeleteMailAtIndexPath: (NSIndexPath*) indexPath
 {
+    
+    RMMail* mail = self.emails[indexPath.row];
+    mail.type = RMMailTypeDeleted;
+    [mail save];
+
     [self removeRowAtIndexPath:indexPath];
 }
 
 - (void) needsCompleteMailAtIndexPath: (NSIndexPath*) indexPath
 {
+
+    RMMail* mail = self.emails[indexPath.row];
+    mail.type = RMMailTypeDone;
+    [mail save];
+
     [self removeRowAtIndexPath:indexPath];
-    
 }
 
 - (void) removeRowAtIndexPath: (NSIndexPath*) indexPath
@@ -135,6 +173,14 @@
     [self.tableView endUpdates];
 
     [CATransaction commit];
+}
+
+- (BOOL) shouldMoveCellAtIndexPath: (NSIndexPath*) indexPath
+{
+    if (self.segmentedControl.selectedIndex == 1)
+        return YES;
+    
+    return NO;
 }
 
 #pragma mark UITableViewDataSource
@@ -158,6 +204,8 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    DLog(@"%@", indexPath);
     
     RMMail* mail = self.emails[indexPath.row];
     RMMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMailCell" forIndexPath:indexPath];
@@ -207,10 +255,13 @@
         
         CGPoint location1 = [recognizer locationOfTouch:0 inView:self.tableView];
         
-        self.currentSwipingCellIndexPath = [self.tableView indexPathForRowAtPoint:location1];
+        NSIndexPath* indexPath = [self.tableView indexPathForRowAtPoint:location1];
+
+        if ([self shouldMoveCellAtIndexPath:indexPath])
+            self.currentSwipingCellIndexPath = indexPath;
     }
     
-    else if (recognizer.state == UIGestureRecognizerStateChanged && [recognizer numberOfTouches] > 0) {
+    else if (recognizer.state == UIGestureRecognizerStateChanged && [recognizer numberOfTouches] > 0 && self.currentSwipingCellIndexPath) {
         
         CGPoint translation = [recognizer translationInView:self.tableView];
         
@@ -236,6 +287,7 @@
             } completion:^(BOOL finished) {
                 
                 [self needsCompleteMailAtIndexPath:self.currentSwipingCellIndexPath];
+                self.currentSwipingCellIndexPath = nil;
                 
             }];
             
@@ -252,7 +304,7 @@
             } completion:^(BOOL finished) {
 
                 [self needsDeleteMailAtIndexPath:self.currentSwipingCellIndexPath];
-
+                self.currentSwipingCellIndexPath = nil;
             }];
             
         } else {
@@ -262,9 +314,17 @@
                 CGRect rect = cell.contentView.frame;
                 rect.origin.x = 0;
                 cell.contentView.frame = rect;
+            } completion:^(BOOL finished) {
+                self.currentSwipingCellIndexPath = nil;
             }];
         }
     }
+}
+
+#pragma mark IKImageSegmentedControlDelegate
+-(void)didSelectSegmentWithIndex:(int)segmentIndex
+{
+    [self loadEmailsFromDB];
 }
 
 @end
