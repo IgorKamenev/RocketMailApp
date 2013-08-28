@@ -14,7 +14,7 @@
 
 + (DataProvider*) sharedInstance;
 
-- (NSArray*) mailByPage: (int) page withType: (RMMailType) type successBlock:(void (^)(NSArray* emails))success;
+- (NSArray*) mailByPage: (int) page withType: (RMMailType) type successBlock:(void (^)(NSMutableArray* emails))success;
 - (NSMutableArray*) emailsFromDBWithType: (RMMailType) mailType;
 
 - (void) removeAllEmails;

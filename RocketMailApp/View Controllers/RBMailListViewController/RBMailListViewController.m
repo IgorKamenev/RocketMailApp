@@ -8,14 +8,17 @@
 
 #import "RBMailListViewController.h"
 #import "DataProvider.h"
+
 #import "RMMailCell.h"
+#import "RMMailLoadingCell.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface RBMailListViewController ()
 
 @property (nonatomic, strong) IKImageSegmentedControl* segmentedControl;
 @property (nonatomic, strong) DataProvider* dataProvider;
-@property (nonatomic, strong) NSMutableArray* emails;
+@property (nonatomic, strong) NSMutableArray* items;
 
 @property (nonatomic) int currentPage;
 
@@ -25,7 +28,14 @@
 
 @property (nonatomic, strong) NSCache* cellCache;
 
+@property (nonatomic, strong) RMMailLoadingCell* loadingCell;
+@property (nonatomic, strong) NSIndexPath* loadingCellIndexPath;
+@property (nonatomic) BOOL isEmailLoading;
+@property (nonatomic) BOOL isDragging;
+
 @end
+
+static int kEmailsPerPage = 20;
 
 @implementation RBMailListViewController
 
@@ -68,7 +78,7 @@
         NSMutableArray* emails = [self.dataProvider emailsFromDBWithType:type];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.emails = emails;
+            self.items = emails;
             [self.tableView reloadData];
         });
         
@@ -121,26 +131,79 @@
 - (void) didRefreshButtonPressed
 {
     
-    self.emails = nil;
+    self.items = nil;
     [self.tableView reloadData];
     [self.dataProvider removeAllEmails];
-    [self loadEmails];
+
+    self.currentPage = 0;
+    [self loadNextEmailsFromServer];
+    
 }
 
-- (void) loadEmails
+- (void) loadNextEmailsFromServer
+{
+
+    if (self.isEmailLoading) return;
+    self.isEmailLoading = YES;
+
+    [self.dataProvider mailByPage:self.currentPage withType:RMMailTypeActual successBlock:^(NSMutableArray *emails) {
+
+        DLog(@"Loaded emails from server for page: %d", self.currentPage);
+        
+        if (emails.count == kEmailsPerPage) {
+            self.currentPage++;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            [self needsHideLoadingCell];
+            [self loadEmailsFromDB];
+            self.isEmailLoading = NO;
+        });
+        
+    }];
+}
+
+- (void) needsShowLoadingCell
 {
     
-    [self.dataProvider mailByPage:0 withType:RMMailTypeActual successBlock:^(NSArray *emails) {
+    DLog();
+    self.loadingCellIndexPath = [NSIndexPath indexPathForRow:self.items.count inSection:0];
+    self.loadingCell = [self.tableView dequeueReusableCellWithIdentifier:@"RMMailLoadingCell" ];
+    
+    [self.tableView beginUpdates];
+    [self.items addObject:self.loadingCell];
+    [self.tableView insertRowsAtIndexPaths:@[self.loadingCellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+    
+}
 
-        self.emails = emails;
-        [self.tableView reloadData];
-    }];
+- (void) needsHideLoadingCell
+{
+
+    if (self.loadingCellIndexPath && self.loadingCell) {
+
+        [CATransaction begin];
+        
+        [CATransaction setCompletionBlock:^{
+            self.loadingCellIndexPath = nil;
+            self.loadingCell = nil;
+        }];
+        
+        [self.tableView beginUpdates];
+        [self.items removeObjectAtIndex: self.loadingCellIndexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[self.loadingCellIndexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+        [self.tableView endUpdates];
+        
+        [CATransaction commit];
+    }
+    
 }
 
 - (void) needsDeleteMailAtIndexPath: (NSIndexPath*) indexPath
 {
     
-    RMMail* mail = self.emails[indexPath.row];
+    RMMail* mail = self.items[indexPath.row];
     mail.type = RMMailTypeDeleted;
     [mail save];
 
@@ -150,7 +213,7 @@
 - (void) needsCompleteMailAtIndexPath: (NSIndexPath*) indexPath
 {
 
-    RMMail* mail = self.emails[indexPath.row];
+    RMMail* mail = self.items[indexPath.row];
     mail.type = RMMailTypeDone;
     [mail save];
 
@@ -169,7 +232,7 @@
 
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
-    [self.emails removeObjectAtIndex: indexPath.row];
+    [self.items removeObjectAtIndex: indexPath.row];
     [self.tableView endUpdates];
 
     [CATransaction commit];
@@ -185,16 +248,28 @@
 
 #pragma mark UITableViewDataSource
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    CGFloat cellHeight = 44;
-//    return cellHeight;
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    CGFloat cellHeight = 44;
+    
+    id object = self.items[indexPath.row];
+    
+    if ([object isKindOfClass:[RMMail class]]) {
+        
+        cellHeight = 85.0;
+
+    } else if ([object isKindOfClass:[RMMailLoadingCell class]]) {
+        
+        cellHeight = 44.0;
+    }
+    
+    return cellHeight;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.emails.count;
+    return self.items.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -205,19 +280,27 @@
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    DLog(@"%@", indexPath);
+    id object = self.items[indexPath.row];
     
-    RMMail* mail = self.emails[indexPath.row];
-    RMMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMailCell" forIndexPath:indexPath];
+    if ([object isKindOfClass:[RMMail class]]) {
 
-    cell.fromLabel.text = mail.from;
-    cell.subjectLabel.text = mail.subject;
-    cell.bodyLabel.text = mail.body;
-    cell.dateLabel.text = [mail.receivedAt description];
-    
-    [self.cellCache setObject:cell forKey:indexPath];
-    
-    return cell;
+        RMMail* mail = self.items[indexPath.row];
+        RMMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMailCell" forIndexPath:indexPath];
+        
+        cell.fromLabel.text = mail.from;
+        cell.subjectLabel.text = mail.subject;
+        cell.bodyLabel.text = mail.body;
+        cell.dateLabel.text = [mail.receivedAt description];
+        
+        [self.cellCache setObject:cell forKey:indexPath];
+        
+        return cell;
+    } else if ([object isKindOfClass:[RMMailLoadingCell class]]) {
+        
+        return object;
+    }
+
+    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -325,6 +408,57 @@
 -(void)didSelectSegmentWithIndex:(int)segmentIndex
 {
     [self loadEmailsFromDB];
+}
+
+#pragma mark UIScrollViewDelegate
+
+
+- (BOOL)shouldShowLoadingCell
+{
+    return YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    if (self.segmentedControl.selectedIndex != 1) return;
+    if (scrollView.contentOffset.y <= 0) return;
+    
+    DLog(@"offsetY: %f", scrollView.contentOffset.y);
+    DLog(@"sizeY: %f", scrollView.contentSize.height);
+    DLog(@"frameSize: %f", scrollView.frame.size.height);
+    
+    
+    
+    if (scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height) {
+        
+        if (self.loadingCellIndexPath) {
+         
+            return;
+        }
+        
+        if (scrollView.frame.size.height < scrollView.contentSize.height) {
+            [self needsShowLoadingCell];
+            [self.loadingCell.activityIndicator startAnimating];
+        }
+        
+        [self loadNextEmailsFromServer];
+        
+    }
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.isDragging = YES;
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    self.isDragging = NO;
+
+    if (self.loadingCell && !self.isEmailLoading) {
+        self.isEmailLoading = YES;
+    }
 }
 
 @end

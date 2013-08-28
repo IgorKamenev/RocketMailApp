@@ -27,9 +27,13 @@
 + (RMMail*) mailByDict: (NSDictionary*) dict
 {
     
-    RMMail* mail = [RMMail new];
+    RMMail* mail = [RMMail findOneByFieldName:@"ID" equalTo:dict[@"id"]];
     
-    mail.ID = [dict[@"id"] intValue];
+    if (!mail) {
+        mail = [RMMail new];
+        mail.ID = [dict[@"id"] intValue];
+    }
+    
     mail.from = dict[@"from"];
     mail.to = dict[@"to"];
     mail.subject = dict[@"subject"];

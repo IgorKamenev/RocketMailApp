@@ -50,6 +50,7 @@
 		229AD6A317CE40F400DE4385 /* iconDone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD6A117CE40F400DE4385 /* iconDone@2x.png */; };
 		229AD6A517CE41FD00DE4385 /* iconDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD6A417CE41FD00DE4385 /* iconDelete@2x.png */; };
 		229AD6A717CE547400DE4385 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229AD6A617CE547400DE4385 /* QuartzCore.framework */; };
+		229AD6AA17CE678E00DE4385 /* RMMailLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD6A917CE678E00DE4385 /* RMMailLoadingCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,8 @@
 		229AD6A117CE40F400DE4385 /* iconDone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDone@2x.png"; sourceTree = "<group>"; };
 		229AD6A417CE41FD00DE4385 /* iconDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDelete@2x.png"; sourceTree = "<group>"; };
 		229AD6A617CE547400DE4385 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		229AD6A817CE678E00DE4385 /* RMMailLoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMailLoadingCell.h; sourceTree = "<group>"; };
+		229AD6A917CE678E00DE4385 /* RMMailLoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMailLoadingCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +217,8 @@
 				229AD64317CD03C000DE4385 /* RBMailListViewController.m */,
 				229AD69917CD2E6A00DE4385 /* RMMailCell.h */,
 				229AD69A17CD2E6A00DE4385 /* RMMailCell.m */,
+				229AD6A817CE678E00DE4385 /* RMMailLoadingCell.h */,
+				229AD6A917CE678E00DE4385 /* RMMailLoadingCell.m */,
 			);
 			path = RBMailListViewController;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 				229AD69317CD269000DE4385 /* Sqlite.m in Sources */,
 				229AD69417CD269000DE4385 /* SqliteManager.m in Sources */,
 				229AD69B17CD2E6A00DE4385 /* RMMailCell.m in Sources */,
+				229AD6AA17CE678E00DE4385 /* RMMailLoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +481,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Kamenev (5DZA446Y39)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -490,6 +497,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "19817AD8-E9AA-4263-9B3B-E511DD972A9F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -506,6 +514,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Kamenev (5DZA446Y39)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -514,6 +523,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "19817AD8-E9AA-4263-9B3B-E511DD972A9F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

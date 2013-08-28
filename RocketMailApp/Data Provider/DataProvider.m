@@ -28,7 +28,7 @@ static NSString* kMailApiURL = @"http://rocket-ios.herokuapp.com/emails.json";
     return _sharedInstance;
 }
 
-- (NSArray*) mailByPage: (int) page withType: (RMMailType) type successBlock:(void (^)(NSArray* emails))success
+- (NSArray*) mailByPage: (int) page withType: (RMMailType) type successBlock:(void (^)(NSMutableArray* emails))success
 {
     
     NSString* urlStr = [NSString stringWithFormat:@"%@?page=%d", kMailApiURL,page];
@@ -36,21 +36,22 @@ static NSString* kMailApiURL = @"http://rocket-ios.herokuapp.com/emails.json";
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json) {
 
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 
-        NSMutableArray* emailsAr = [NSMutableArray new];
-        
-        NSDictionary* emails = json[@"emails"];
-        
-        [RMMail beginTransaction];
-        for (NSDictionary* email in emails) {
-            RMMail* mail = [RMMail mailByDict:email];
-            [mail save];
-            [emailsAr addObject:mail];
-        }
-        [RMMail endTransaction];
-    
-        success(emailsAr);
-        
+            NSMutableArray* emailsAr = [NSMutableArray new];
+            
+            NSDictionary* emails = json[@"emails"];
+            
+            [RMMail beginTransaction];
+            for (NSDictionary* email in emails) {
+                RMMail* mail = [RMMail mailByDict:email];
+                [mail save];
+                [emailsAr addObject:mail];
+            }
+            [RMMail endTransaction];
+            success(emailsAr);
+        });
         
     } failure:nil];
 
