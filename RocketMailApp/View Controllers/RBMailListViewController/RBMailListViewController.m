@@ -148,8 +148,6 @@ static int kEmailsPerPage = 20;
 
     [self.dataProvider mailByPage:self.currentPage withType:RMMailTypeActual successBlock:^(NSMutableArray *emails) {
 
-        DLog(@"Loaded emails from server for page: %d", self.currentPage);
-        
         if (emails.count == kEmailsPerPage) {
             self.currentPage++;
         }
@@ -290,7 +288,7 @@ static int kEmailsPerPage = 20;
         cell.fromLabel.text = mail.from;
         cell.subjectLabel.text = mail.subject;
         cell.bodyLabel.text = mail.body;
-        cell.dateLabel.text = [mail.receivedAt description];
+        cell.dateLabel.text = [mail.receivedAt relativeDate];
         
         [self.cellCache setObject:cell forKey:indexPath];
         
@@ -412,23 +410,11 @@ static int kEmailsPerPage = 20;
 
 #pragma mark UIScrollViewDelegate
 
-
-- (BOOL)shouldShowLoadingCell
-{
-    return YES;
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
     if (self.segmentedControl.selectedIndex != 1) return;
     if (scrollView.contentOffset.y <= 0) return;
-    
-    DLog(@"offsetY: %f", scrollView.contentOffset.y);
-    DLog(@"sizeY: %f", scrollView.contentSize.height);
-    DLog(@"frameSize: %f", scrollView.frame.size.height);
-    
-    
     
     if (scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height) {
         

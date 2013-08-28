@@ -17,6 +17,12 @@
 		2228FF0017CCAE62004362D3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2228FEFF17CCAE62004362D3 /* Default@2x.png */; };
 		2228FF0217CCAE62004362D3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF0117CCAE62004362D3 /* Default-568h@2x.png */; };
 		2228FF0517CCAE62004362D3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF0317CCAE62004362D3 /* MainStoryboard.storyboard */; };
+		223C394317CE9C9800C15EBC /* ChevinCyrillic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223C393E17CE9C9800C15EBC /* ChevinCyrillic-Bold.ttf */; };
+		223C394417CE9C9800C15EBC /* ChevinCyrillic-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223C393F17CE9C9800C15EBC /* ChevinCyrillic-BoldItalic.ttf */; };
+		223C394517CE9C9800C15EBC /* ChevinCyrillic-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223C394017CE9C9800C15EBC /* ChevinCyrillic-Light.ttf */; };
+		223C394617CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223C394117CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf */; };
+		223C394717CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 223C394217CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf */; };
+		223C394B17CEA24E00C15EBC /* NSDate+relativeDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C394A17CEA24E00C15EBC /* NSDate+relativeDate.m */; };
 		229AD64417CD03C000DE4385 /* RBMailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229AD64317CD03C000DE4385 /* RBMailListViewController.m */; };
 		229AD64B17CD050B00DE4385 /* navigationBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64A17CD050B00DE4385 /* navigationBarBg@2x.png */; };
 		229AD64F17CD082E00DE4385 /* segmentActualMailOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229AD64C17CD082E00DE4385 /* segmentActualMailOn@2x.png */; };
@@ -68,6 +74,13 @@
 		2228FEFF17CCAE62004362D3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2228FF0117CCAE62004362D3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2228FF0417CCAE62004362D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		223C393E17CE9C9800C15EBC /* ChevinCyrillic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChevinCyrillic-Bold.ttf"; sourceTree = "<group>"; };
+		223C393F17CE9C9800C15EBC /* ChevinCyrillic-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChevinCyrillic-BoldItalic.ttf"; sourceTree = "<group>"; };
+		223C394017CE9C9800C15EBC /* ChevinCyrillic-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChevinCyrillic-Light.ttf"; sourceTree = "<group>"; };
+		223C394117CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChevinCyrillic-LightItalic.ttf"; sourceTree = "<group>"; };
+		223C394217CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "G-Type - ChevinPro-Medium.otf"; sourceTree = "<group>"; };
+		223C394917CEA24E00C15EBC /* NSDate+relativeDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+relativeDate.h"; sourceTree = "<group>"; };
+		223C394A17CEA24E00C15EBC /* NSDate+relativeDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+relativeDate.m"; sourceTree = "<group>"; };
 		229AD64217CD03C000DE4385 /* RBMailListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBMailListViewController.h; sourceTree = "<group>"; };
 		229AD64317CD03C000DE4385 /* RBMailListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBMailListViewController.m; sourceTree = "<group>"; };
 		229AD64717CD04E700DE4385 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
@@ -175,6 +188,7 @@
 		2228FEF117CCAE62004362D3 /* RocketMailApp */ = {
 			isa = PBXGroup;
 			children = (
+				223C394817CEA22200C15EBC /* Categories */,
 				229AD68317CD211700DE4385 /* Model */,
 				229AD67F17CD20E700DE4385 /* Data Provider */,
 				229AD64817CD050B00DE4385 /* Resources */,
@@ -200,6 +214,27 @@
 				2228FF0117CCAE62004362D3 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		223C393D17CE9C9800C15EBC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				223C393E17CE9C9800C15EBC /* ChevinCyrillic-Bold.ttf */,
+				223C393F17CE9C9800C15EBC /* ChevinCyrillic-BoldItalic.ttf */,
+				223C394017CE9C9800C15EBC /* ChevinCyrillic-Light.ttf */,
+				223C394117CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf */,
+				223C394217CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		223C394817CEA22200C15EBC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				223C394917CEA24E00C15EBC /* NSDate+relativeDate.h */,
+				223C394A17CEA24E00C15EBC /* NSDate+relativeDate.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		229AD64017CD03AB00DE4385 /* View Controllers */ = {
@@ -245,6 +280,7 @@
 		229AD64817CD050B00DE4385 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				223C393D17CE9C9800C15EBC /* Fonts */,
 				229AD64917CD050B00DE4385 /* Images */,
 			);
 			path = Resources;
@@ -413,6 +449,11 @@
 				229AD69F17CE3F4600DE4385 /* RMMailCellDelimiter@2x.png in Resources */,
 				229AD6A317CE40F400DE4385 /* iconDone@2x.png in Resources */,
 				229AD6A517CE41FD00DE4385 /* iconDelete@2x.png in Resources */,
+				223C394317CE9C9800C15EBC /* ChevinCyrillic-Bold.ttf in Resources */,
+				223C394417CE9C9800C15EBC /* ChevinCyrillic-BoldItalic.ttf in Resources */,
+				223C394517CE9C9800C15EBC /* ChevinCyrillic-Light.ttf in Resources */,
+				223C394617CE9C9800C15EBC /* ChevinCyrillic-LightItalic.ttf in Resources */,
+				223C394717CE9C9800C15EBC /* G-Type - ChevinPro-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +485,7 @@
 				229AD69417CD269000DE4385 /* SqliteManager.m in Sources */,
 				229AD69B17CD2E6A00DE4385 /* RMMailCell.m in Sources */,
 				229AD6AA17CE678E00DE4385 /* RMMailLoadingCell.m in Sources */,
+				223C394B17CEA24E00C15EBC /* NSDate+relativeDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

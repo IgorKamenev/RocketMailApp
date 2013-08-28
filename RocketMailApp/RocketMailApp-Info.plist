@@ -38,5 +38,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ChevinCyrillic-Bold.ttf</string>
+		<string>ChevinCyrillic-BoldItalic.ttf</string>
+		<string>ChevinCyrillic-Light.ttf</string>
+		<string>ChevinCyrillic-LightItalic.ttf</string>
+		<string>G-Type - ChevinPro-Medium.otf</string>
+	</array>
 </dict>
 </plist>

@@ -41,11 +41,7 @@
     mail.starred = [dict[@"starred"] boolValue];
     mail.messages = [dict[@"messages"] intValue];
 
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
-    NSDate *receivedAt = [dateFormatter dateFromString: @"2012-09-16 23:59:59 JST"];
-    
-    mail.receivedAt = receivedAt;
+    mail.receivedAt = [NSDate parseRFC3339Date:dict[@"received_at"]];
 
     return mail;
 }

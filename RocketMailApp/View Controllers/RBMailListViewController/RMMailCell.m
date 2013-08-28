@@ -35,6 +35,11 @@
     rect.size.width = self.frame.size.width;
     self.deleteView.frame = rect;
     
+    self.fromLabel.font = [UIFont fontWithName:@"ChevinPro-Medium" size:15.0];
+    self.subjectLabel.font = [UIFont fontWithName:@"ChevinCyrillic-Bold" size:15.0];
+    self.bodyLabel.font = [UIFont fontWithName:@"ChevinPro-Medium" size:15.0];
+    self.dateLabel.font = [UIFont fontWithName:@"ChevinPro-Medium" size:15.0];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
